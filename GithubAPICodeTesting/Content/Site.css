@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
@@ -16,9 +15,18 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.jumbotron {
+    text-align: center;
+    max-width:800px;
 }
+
+.input-group mb-3 {
+    display: inline-block;
+    border: 2px solid #fff;
+}
+
+.input-group mb-3 {
+    _display: inline;/*For IE Hack*/
+}
+
+

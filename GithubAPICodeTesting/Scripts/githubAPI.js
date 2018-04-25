@@ -8,6 +8,7 @@
 (function (window) {
     "use strict";
 
+    //onload search function
     function search() {
         $('#get-user-info').on('click', function (e) {
             e.preventDefault();
@@ -16,27 +17,26 @@
             var username = $('#username').val();
             //get the user
             var username_url = 'https://api.github.com/users/' + username;
-            //get all repos under this user
-            var user_repo_url = 'https://api.github.com/users/' + username + '/repos';
 
             $.ajax({
                 type: "GET",
                 url: username_url,
                 dataType: 'json'
             }).always(function (json) {
-                console.log(json);    
+                console.log(json);
                 if (json.statusText == "Not Found" || username == "") {
                     $('#response-data').html('<div class="alert alert-danger" role="alert">NO USER INFO FOUND!</div >');
                 } else {
                     // show the data
-                    show(json);
-                }
-            });
-
+                    showUserInfo(json);
+                    showRepo(username);
+                }//the end of else statement
+            });//the end of first ajax function
         });//end of click event handler
     }//end of function search()
 
-    function show(json) {
+    //show the basic info of user
+    function showUserInfo(json) {
 
             // else we have a user and we display their info
             var fullname = json.name;
@@ -53,13 +53,37 @@
             $('#response-data').empty();
             var userHtml = "";
 
-            userHtml += '<h2>' + fullname + ' <span class="smallname">(@<a href="' + profileurl + '" target="_blank">' + username + '</a>)</span></h2>';
-            userHtml += '<div class="ghcontent"><div class="avi"><a href="' + profileurl + '" target="_blank"><img src="' + aviurl + '" width="80" height="80" alt="' + username + '"></a></div>';
+            userHtml += '<a href="' + profileurl + '" target="_blank"><img src="' + aviurl + '" width="80" height="80" alt="' + username + '"></a>';
+            userHtml += '<h2>' + fullname + ' <span class="linkname">(@<a href="' + profileurl + '" target="_blank">' + username + '</a>)</span></h2>';        
             userHtml += '<p>Followers: ' + followersnum + ' - Following: ' + followingnum + '<br>Repos: ' + reposnum + '</p></div>';
-            userHtml += '<div class="repolist">';
+            userHtml += '<div class="repolist"></div>';
 
-            $('#response-data').html(userHtml);
-    }// end of show() function
+            $('#response-data').append(userHtml);
+    }// end of showUserInfo() function
+
+    //the function to show the repo of user
+    function showRepo(username) {
+        //get all repos under this user
+        var user_repo_url = 'https://api.github.com/users/' + username + '/repos';
+
+        $.ajax({
+            type: "GET",
+            url: user_repo_url,
+            dataType: 'json'
+        }).always(function (repositories) {
+            console.log(repositories);
+            var reposhtml = "";
+            if (repositories.length == 0) { reposhtml += '<p>No repos!</p>'; }
+            else {
+                reposhtml += '<p><strong>Repos List:</strong></p> <ul>';
+                $.each(repositories, function (index) {
+                    reposhtml += '<li><a href="' + repositories[index].html_url + '" target="_blank">' + repositories[index].name + '</a></li>';
+                });
+                reposhtml += '</ul>';
+                $('.repolist').append(reposhtml);
+            }
+        });//the end of second ajax function           
+    }// end of showRepo() Function
 
     window.onload = function () {
         search();

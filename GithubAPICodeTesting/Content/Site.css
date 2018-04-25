@@ -28,4 +28,36 @@
     _display: inline;/*For IE Hack*/
 }
 
+#response-data{
+    display:block;
+    text-align:center;
+}
+
+.linkname {
+    font-size: 0.75em;
+    color: #a9a9a9;
+    font-style: italic;
+}
+
+.repolist ul li {
+  display: block;
+  float:left;
+  position:relative;
+}
+
+.repolist ul li a {
+    font-weight: bold;
+    padding: 6px 9px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border: 1px solid #356492;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #3673af;
+}
+
 

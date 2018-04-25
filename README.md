@@ -1,8 +1,7 @@
 # GithubAPICodeTesting
 
-Here are the code file I made:
+Here are the code files I have made:  
 
-<br>
 <li>CSS - Content/Site.css</li>
 <li>JS - Scripts/githubAPI.js</li>
 <li>html - Views/Home/Index.cshtml</li>

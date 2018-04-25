@@ -8,15 +8,12 @@ Here are the code file I made:
 <li>html - Views/Home/Index.cshtml</li>
 <li>Bootstrap - Views/Shared/_Layout.cshtml</li>
 
-</br>
-# PLATFORM: ASP.NET Framework MVC
+## PLATFORM: ASP.NET Framework MVC  
 
-</br>
-# TECHNOLOGIES: JQuery, C#, HTML, Bootstrap, CSS
+## TECHNOLOGIES: JQuery, C#, HTML, Bootstrap, CSS  
 
-</br>
-I do create a MVC but function is based on JQuery and html
-Will think about how to improve it with pure MVC techniques
+I do create a MVC but function is based on JQuery and html  
 
-</br>
+Will think about how to improve it with pure MVC techniques  
+
 Thanks for reviewing :D
